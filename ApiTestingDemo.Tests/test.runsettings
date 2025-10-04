@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <TestRunParameters>
+    <Parameter name="AuthUrl" value="https://effizienteauthdemo.azurewebsites.net" />
+    <Parameter name="DefaultTimeout" value="30000" />
+    <Parameter name="RetryAttempts" value="3" />
+  </TestRunParameters>
+</RunSettings>

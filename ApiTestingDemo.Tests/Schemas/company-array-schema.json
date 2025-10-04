@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "Id": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "ServerId": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "Key": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "Name": {
+        "type": "string",
+        "minLength": 1
+      },
+      "DataBase": {
+        "type": "string"
+      },
+      "Active": {
+        "type": "boolean"
+      }
+    },
+    "required": ["Id", "ServerId", "Key", "Name", "DataBase", "Active"],
+    "additionalProperties": false
+  }
+}

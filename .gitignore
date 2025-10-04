@@ -1,0 +1,10 @@
+# Ignore build output folders
+bin/
+obj/
+
+# macOS Finder metadata
+.DS_Store
+
+# Allure test results
+allure-results/
+allure-report/
