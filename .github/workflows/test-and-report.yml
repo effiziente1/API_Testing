@@ -14,7 +14,7 @@ permissions:
   id-token: write
 
 jobs:
-  test:
+  test-and-report:
     runs-on: ubuntu-latest
 
     steps:
@@ -34,7 +34,7 @@ jobs:
           USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
           USER_NAME: ${{ secrets.USER_NAME }}
           USER_COMPANY: ${{ secrets.USER_COMPANY }}
-        run: dotnet test --settings:ApiTestingDemo.Tests/test.runsettings -- TestRunParameters.Parameter\(name=\"AuthUrl\",\ value=\"${{ secrets.AUTH_URL }}\"\)
+        run: dotnet test --settings:ApiTestingDemo.Tests/test.runsettings
 
       - name: Upload Allure results
         uses: actions/upload-artifact@v4
@@ -44,21 +44,6 @@ jobs:
           path: allure-results
           retention-days: 30
 
-  report:
-    runs-on: ubuntu-latest
-    needs: test
-    if: always()
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Download Allure results
-        uses: actions/download-artifact@v4
-        with:
-          name: allure-results
-          path: allure-results
-
       - name: Checkout gh-pages for history
         uses: actions/checkout@v4
         continue-on-error: true
@@ -67,43 +52,38 @@ jobs:
           path: gh-pages
 
       - name: Copy previous Allure history
+        if: always()
         run: |
-          if [ -d "gh-pages/allure-report/history" ]; then
+          if [ -d "gh-pages/history" ]; then
             mkdir -p allure-results/history
-            cp -r gh-pages/allure-report/history/* allure-results/history/
-            echo "Copied Allure history from previous run"
+            cp -r gh-pages/history/* allure-results/history/
           fi
 
-      - name: Setup Java for Allure
+      - name: Setup Java (required for Allure)
+        if: always()
         uses: actions/setup-java@v4
         with:
           distribution: "temurin"
           java-version: "17"
 
-      - name: Download Allure CLI
-        run: |
-          curl -o allure-commandline.zip -L https://github.com/allure-framework/allure2/releases/download/2.32.0/allure-2.32.0.zip
-          unzip allure-commandline.zip -d .
-          sudo ln -s $(pwd)/allure-2.32.0/bin/allure /usr/local/bin/allure
+      - name: Install Allure CLI via npm
+        if: always()
+        run: npm install -g allure-commandline
 
-      - name: Generate Allure HTML report
+      - name: Generate Allure Report
+        if: always()
         run: allure generate allure-results -o allure-report --clean
-
-      - name: Create downloadable ZIP of Allure report
-        run: |
-          cd allure-report
-          zip -r ../allure-report.zip .
-          cd ..
 
       - name: Upload Allure HTML report as artifact
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: allure-report
-          path: allure-report.zip
+          path: allure-report
           retention-days: 30
 
       - name: Deploy to GitHub Pages
+        if: always()
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

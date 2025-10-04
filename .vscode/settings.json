@@ -1,0 +1,5 @@
+{
+  "dotnet-test-explorer.testProjectPath": "**/*.Tests.csproj",
+  "dotnet-test-explorer.runSettingsPath": "${workspaceFolder}/ApiTestingDemo.Tests/test.runsettings",
+  "dotnet.unitTests.runSettingsPath": "${workspaceFolder}/ApiTestingDemo.Tests/test.runsettings"
+}
