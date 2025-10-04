@@ -1,12 +1,12 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","198","UnauthenticatedRequest_ToProtectedEndpoint_ReturnsUnauthorized","Login","Sat Oct 04 19:50:13 UTC 2025","passed","Sat Oct 04 19:50:13 UTC 2025","","Authentication","LoginTests","UnauthenticatedRequest_ToProtectedEndpoint_ReturnsUnauthorized"
-"","872","Login_WithValidCredentials_ReturnsToken","Login","Sat Oct 04 19:50:12 UTC 2025","passed","Sat Oct 04 19:50:13 UTC 2025","","Authentication","LoginTests","Login_WithValidCredentials_ReturnsToken"
-"","306","GetCompanies_ReturnsWithinAcceptableTime","Company","Sat Oct 04 19:50:10 UTC 2025","passed","Sat Oct 04 19:50:10 UTC 2025","","","CompanyTests","GetCompanies_ReturnsWithinAcceptableTime"
-"","288","GetCompanies_WithValidServerId_ReturnsCompanies","Company","Sat Oct 04 19:50:11 UTC 2025","passed","Sat Oct 04 19:50:11 UTC 2025","","","CompanyTests","GetCompanies_WithValidServerId_ReturnsCompanies"
-"Zero server ID
-","270","GetCompanies_WithInvalidServerId_ReturnsEmptyArray(0)","Company","Sat Oct 04 19:50:10 UTC 2025","passed","Sat Oct 04 19:50:10 UTC 2025","","","CompanyTests","GetCompanies_WithInvalidServerId_ReturnsEmptyArray"
-"","195","GetCompanies_WithoutAuthentication_ReturnsUnauthorized","Company","Sat Oct 04 19:50:11 UTC 2025","passed","Sat Oct 04 19:50:11 UTC 2025","","","CompanyTests","GetCompanies_WithoutAuthentication_ReturnsUnauthorized"
-"","383","GetCompanies_AuthenticatedRequestValidatesSchema","","Sat Oct 04 19:50:08 UTC 2025","passed","Sat Oct 04 19:50:08 UTC 2025","","","CompanySchemaTests","GetCompanies_AuthenticatedRequestValidatesSchema"
-"","288","GetCompanies_ReturnsValidCompanyStructure","Company","Sat Oct 04 19:50:09 UTC 2025","passed","Sat Oct 04 19:50:10 UTC 2025","","","CompanyTests","GetCompanies_ReturnsValidCompanyStructure"
+"","190","GetCompanies_WithoutAuthentication_ReturnsUnauthorized","Company","Sat Oct 04 19:53:15 UTC 2025","passed","Sat Oct 04 19:53:15 UTC 2025","","","CompanyTests","GetCompanies_WithoutAuthentication_ReturnsUnauthorized"
 "Non-existent server ID
-","338","GetCompanies_WithInvalidServerId_ReturnsEmptyArray(999)","Company","Sat Oct 04 19:50:10 UTC 2025","passed","Sat Oct 04 19:50:11 UTC 2025","","","CompanyTests","GetCompanies_WithInvalidServerId_ReturnsEmptyArray"
+","298","GetCompanies_WithInvalidServerId_ReturnsEmptyArray(999)","Company","Sat Oct 04 19:53:14 UTC 2025","passed","Sat Oct 04 19:53:15 UTC 2025","","","CompanyTests","GetCompanies_WithInvalidServerId_ReturnsEmptyArray"
+"","271","GetCompanies_ReturnsWithinAcceptableTime","Company","Sat Oct 04 19:53:14 UTC 2025","passed","Sat Oct 04 19:53:14 UTC 2025","","","CompanyTests","GetCompanies_ReturnsWithinAcceptableTime"
+"","414","GetCompanies_AuthenticatedRequestValidatesSchema","Company","Sat Oct 04 19:53:12 UTC 2025","passed","Sat Oct 04 19:53:12 UTC 2025","","","CompanySchemaTests","GetCompanies_AuthenticatedRequestValidatesSchema"
+"","822","Login_WithValidCredentials_ReturnsToken","Login","Sat Oct 04 19:53:16 UTC 2025","passed","Sat Oct 04 19:53:17 UTC 2025","","Authentication","LoginTests","Login_WithValidCredentials_ReturnsToken"
+"","216","UnauthenticatedRequest_ToProtectedEndpoint_ReturnsUnauthorized","Login","Sat Oct 04 19:53:17 UTC 2025","passed","Sat Oct 04 19:53:17 UTC 2025","","Authentication","LoginTests","UnauthenticatedRequest_ToProtectedEndpoint_ReturnsUnauthorized"
+"Zero server ID
+","235","GetCompanies_WithInvalidServerId_ReturnsEmptyArray(0)","Company","Sat Oct 04 19:53:14 UTC 2025","passed","Sat Oct 04 19:53:14 UTC 2025","","","CompanyTests","GetCompanies_WithInvalidServerId_ReturnsEmptyArray"
+"","295","GetCompanies_ReturnsValidCompanyStructure","Company","Sat Oct 04 19:53:14 UTC 2025","passed","Sat Oct 04 19:53:14 UTC 2025","","","CompanyTests","GetCompanies_ReturnsValidCompanyStructure"
+"","285","GetCompanies_WithValidServerId_ReturnsCompanies","Company","Sat Oct 04 19:53:15 UTC 2025","passed","Sat Oct 04 19:53:15 UTC 2025","","","CompanyTests","GetCompanies_WithValidServerId_ReturnsCompanies"
