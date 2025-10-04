@@ -1,6 +1,15 @@
 # API_Testing
 
+[![Test Status](https://github.com/effiziente1/API_Testing/actions/workflows/test-and-report.yml/badge.svg)](https://github.com/effiziente1/API_Testing/actions/workflows/test-and-report.yml)
+[![Allure Report](https://img.shields.io/badge/Allure%20Report-📊-blue)](https://effiziente1.github.io/API_Testing/)
+
 API testing sample using RestSharp and RestAssured.Net with Allure reporting
+
+## 📊 Test Reports
+
+**Latest Allure Report:** [https://effiziente1.github.io/API_Testing/](https://effiziente1.github.io/API_Testing/)
+
+View interactive test results with trends, history, and detailed test execution reports.
 
 ## 📚 Documentation
 

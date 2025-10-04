@@ -1,4 +1,4 @@
-name: API Tests with Allure Report
+name: 🧪 API Tests & Allure Report
 
 on:
   push:
@@ -59,13 +59,6 @@ jobs:
             cp -r gh-pages/history/* allure-results/history/
           fi
 
-      - name: Setup Java (required for Allure)
-        if: always()
-        uses: actions/setup-java@v4
-        with:
-          distribution: "temurin"
-          java-version: "17"
-
       - name: Install Allure CLI via npm
         if: always()
         run: npm install -g allure-commandline
@@ -90,3 +83,4 @@ jobs:
           publish_dir: ./allure-report
           publish_branch: gh-pages
           keep_files: false
+          enable_jekyll: false
