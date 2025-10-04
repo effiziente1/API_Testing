@@ -9,6 +9,8 @@ namespace ApiTestingDemo.Tests.RestSharp.Tests;
 /// Functional tests for Company API endpoints using RestSharp
 /// These tests verify the actual business functionality of the API
 /// </summary>
+[Category("Company")]
+[Category("API")]
 public class CompanyTests : TestBase
 {
     private IApiClient _apiClient = null!;
@@ -25,6 +27,7 @@ public class CompanyTests : TestBase
     /// Test: GET companies by valid server ID returns data
     /// </summary>
     [Test]
+    [Category("Smoke")]
     public async Task GetCompanies_WithValidServerId_ReturnsCompanies()
     {
         // Arrange

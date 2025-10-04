@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Product defects",
+    "matchedStatuses": ["failed"],
+    "messageRegex": ".*AssertionException.*"
+  },
+  {
+    "name": "Test defects",
+    "matchedStatuses": ["broken"]
+  },
+  {
+    "name": "Warnings",
+    "matchedStatuses": ["passed"],
+    "messageRegex": ".*Warning.*"
+  },
+  {
+    "name": "Skipped tests",
+    "matchedStatuses": ["skipped"]
+  }
+]

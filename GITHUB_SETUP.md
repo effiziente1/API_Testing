@@ -43,7 +43,7 @@ If you need to override the default API URL from `test.runsettings`:
 The pipeline runs on:
 - **Push to main branch**: Automatically runs when code is pushed to main
 - **Manual trigger**: Use "Run workflow" button in Actions tab
-- **Scheduled**: Daily at midnight UTC
+- **Scheduled**: Daily at 1:00 AM CST (Mexico Central Time)
 
 **Note**: The workflow runs in a single job for efficiency (checkout code only once).
 
@@ -65,15 +65,23 @@ The pipeline automatically:
 
 After the workflow completes successfully, you can access the reports in two ways:
 
-### Option 1: Download as Artifact (No server required)
+### Option 1: Download Single-File Report (✅ Download & Open)
 1. Go to **Actions** tab in your repository
 2. Click on the completed workflow run
 3. Scroll down to **Artifacts** section
-4. Download **allure-report** artifact (folder automatically zipped by GitHub)
-5. Extract the downloaded ZIP file locally
-6. Open `index.html` in your browser to view the report
+4. Download **allure-single-file-report**
+5. Double-click the downloaded `index.html` file
 
-### Option 2: View on GitHub Pages (Online)
+**✅ Works directly** - No server needed! This is a self-contained HTML file with all resources embedded.
+
+**Note**: This single-file version has the same content but may be slightly slower to load than the full version.
+
+### Option 2: Download Full Report (Requires server)
+1. Download **allure-report** artifact
+2. Extract and run: `python -m http.server 8080`
+3. Open: http://localhost:8080
+
+### Option 3: View on GitHub Pages (Online - Recommended)
 1. Navigate to **Settings** → **Pages** to find your GitHub Pages URL
 2. The Allure report will be available at: `https://<username>.github.io/<repository>/`
 3. Reports include test history and trends from previous runs

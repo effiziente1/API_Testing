@@ -6,7 +6,7 @@ on:
       - main
   workflow_dispatch:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "0 7 * * *"  # 1:00 AM CST (7:00 AM UTC)
 
 permissions:
   contents: write
@@ -36,6 +36,10 @@ jobs:
           USER_COMPANY: ${{ secrets.USER_COMPANY }}
         run: dotnet test --settings:ApiTestingDemo.Tests/test.runsettings
 
+      - name: Copy categories to allure-results
+        if: always()
+        run: cp ApiTestingDemo.Tests/categories.json allure-results/categories.json
+
       - name: Upload Allure results
         uses: actions/upload-artifact@v4
         if: always()
@@ -54,10 +58,17 @@ jobs:
       - name: Copy previous Allure history
         if: always()
         run: |
-          if [ -d "gh-pages/history" ]; then
+          if [ -d "gh-pages/allure-report/history" ]; then
             mkdir -p allure-results/history
-            cp -r gh-pages/history/* allure-results/history/
+            cp -r gh-pages/allure-report/history/* allure-results/history/
           fi
+
+      - name: Setup Java (required for Allure)
+        if: always()
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "17"
 
       - name: Install Allure CLI via npm
         if: always()
@@ -66,6 +77,18 @@ jobs:
       - name: Generate Allure Report
         if: always()
         run: allure generate allure-results -o allure-report --clean
+
+      - name: Generate Single-File Allure Report
+        if: always()
+        run: allure generate allure-results -o allure-single-file --single-file --clean
+
+      - name: Upload Single-File HTML report as artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: allure-single-file-report
+          path: allure-single-file/index.html
+          retention-days: 30
 
       - name: Upload Allure HTML report as artifact
         uses: actions/upload-artifact@v4

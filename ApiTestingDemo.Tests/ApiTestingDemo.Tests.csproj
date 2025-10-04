@@ -39,6 +39,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Link>allureConfig.json</Link>
     </Content>
+    <Content Include="categories.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

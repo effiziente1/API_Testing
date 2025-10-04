@@ -28,7 +28,7 @@ public class RestSharpClient : IApiClient
         {
             options.Authenticator = new JwtAuthenticator(token);
         }
-        
+
         // Configure timeout from test context if available
         var timeOut = TestContext.Parameters["TimeOut"];
         if (int.TryParse(timeOut, out var timeoutValue))
@@ -44,7 +44,9 @@ public class RestSharpClient : IApiClient
     /// </summary>
     public async Task<ApiResponse> GetAsync(string endpoint)
     {
-        var response = await _client.ExecuteAsync(new RestRequest(endpoint, Method.Get));
+        var request = new RestRequest(endpoint, Method.Get);
+        var response = await _client.ExecuteAsync(request);
+        LogRequestResponse(request, response);
         return ProcessApiResponse(response);
     }
 
@@ -53,7 +55,9 @@ public class RestSharpClient : IApiClient
     /// </summary>
     public async Task<ApiResponse<T>> GetAsync<T>(string endpoint)
     {
-        var response = await _client.ExecuteAsync(new RestRequest(endpoint, Method.Get));
+        var request = new RestRequest(endpoint, Method.Get);
+        var response = await _client.ExecuteAsync(request);
+        LogRequestResponse(request, response);
         return ProcessApiResponse<T>(response);
     }
 
@@ -66,6 +70,7 @@ public class RestSharpClient : IApiClient
         request.AddJsonBody(body);
 
         var response = await _client.ExecuteAsync(request);
+        LogRequestResponse(request, response, body);
         return ProcessApiResponse(response);
     }
 
@@ -78,6 +83,7 @@ public class RestSharpClient : IApiClient
         request.AddJsonBody(body);
 
         var response = await _client.ExecuteAsync(request);
+        LogRequestResponse(request, response, body);
         return ProcessApiResponse<T>(response);
     }
 
@@ -90,6 +96,7 @@ public class RestSharpClient : IApiClient
         request.AddJsonBody(body);
 
         var response = await _client.ExecuteAsync(request);
+        LogRequestResponse(request, response, body);
         return ProcessApiResponse(response);
     }
 
@@ -102,6 +109,7 @@ public class RestSharpClient : IApiClient
         request.AddJsonBody(body);
 
         var response = await _client.ExecuteAsync(request);
+        LogRequestResponse(request, response, body);
         return ProcessApiResponse<T>(response);
     }
 
@@ -110,7 +118,9 @@ public class RestSharpClient : IApiClient
     /// </summary>
     public async Task<ApiResponse> DeleteAsync(string endpoint)
     {
-        var response = await _client.ExecuteAsync(new RestRequest(endpoint, Method.Delete));
+        var request = new RestRequest(endpoint, Method.Delete);
+        var response = await _client.ExecuteAsync(request);
+        LogRequestResponse(request, response);
         return ProcessApiResponse(response);
     }
 
@@ -171,6 +181,30 @@ public class RestSharpClient : IApiClient
         if ((int)response.StatusCode >= 500)
         {
             Console.WriteLine("Server error: " + response.Content);
+            Console.WriteLine("Server url: " + response.ResponseUri);
+
+        }
+    }
+
+    /// <summary>
+    /// Logs request and response details when status code >= 400
+    /// </summary>
+    private void LogRequestResponse(RestRequest request, RestResponse response, object? body = null)
+    {
+        if ((int)response.StatusCode >= 400)
+        {
+            Console.WriteLine("========== HTTP ERROR ==========");
+            Console.WriteLine($"Method: {request.Method}");
+            Console.WriteLine($"URL: {response.ResponseUri}");
+            Console.WriteLine($"Status Code: {(int)response.StatusCode} {response.StatusCode}");
+            
+            if (body != null)
+            {
+                Console.WriteLine($"Request Body: {JsonSerializer.Serialize(body, new JsonSerializerOptions { WriteIndented = true })}");
+            }
+            
+            Console.WriteLine($"Response Body: {response.Content}");
+            Console.WriteLine("================================");
         }
     }
 }
