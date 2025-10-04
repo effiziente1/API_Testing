@@ -1,3 +1,4 @@
+using Allure.NUnit.Attributes;
 using ApiTestingDemo.Tests.Shared;
 using ApiTestingDemo.Tests.Shared.Clients;
 using ApiTestingDemo.Tests.Shared.Helpers;
@@ -8,6 +9,9 @@ namespace ApiTestingDemo.Tests.RestAssured.Tests;
 /// Functional tests for Company API using RestAssured with schema validation
 /// These tests verify API responses match the expected JSON schema
 /// </summary>
+[AllureParentSuite("Company")]
+[Category("Company")]
+[Category("SchemaValidation")]
 public class CompanySchemaTests : TestBase
 {
     private RestAssuredClient _restAssuredClient = null!;
