@@ -11,9 +11,7 @@ namespace ApiTestingDemo.Tests.RestSharp.Tests;
 /// These tests verify the actual business functionality of the API
 /// </summary>
 [AllureParentSuite("Login")]
-[AllureSuite("Authentication")]
 [Category("Login")]
-[Category("Authentication")]
 public class LoginTests : TestBase
 {
     private IApiClient _apiClient = null!;
