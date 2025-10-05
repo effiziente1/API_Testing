@@ -1,7 +1,6 @@
 using ApiTestingDemo.Tests.Shared;
 using ApiTestingDemo.Tests.Shared.Clients;
 using ApiTestingDemo.Tests.Shared.Models;
-using FluentAssertions;
 using Allure.NUnit.Attributes;
 
 namespace ApiTestingDemo.Tests.RestSharp.Tests;
