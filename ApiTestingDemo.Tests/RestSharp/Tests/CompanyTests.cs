@@ -1,7 +1,6 @@
 using ApiTestingDemo.Tests.Shared;
 using ApiTestingDemo.Tests.Shared.Clients;
 using ApiTestingDemo.Tests.Shared.Models;
-using FluentAssertions;
 using Allure.NUnit.Attributes;
 
 namespace ApiTestingDemo.Tests.RestSharp.Tests;
@@ -38,16 +37,16 @@ public class CompanyTests : TestBase
         var response = await _apiClient.GetAsync<Company[]>($"api/Server/{serverId}/Companies");
 
         // Assert
-        response.IsSuccess.Should().BeTrue("request should succeed");
-        response.StatusCode.Should().Be(200, "should return OK status");
-        response.Data.Should().NotBeNull("response should contain data");
-        response.Data.Should().NotBeEmpty("server 1 should have companies");
+        Assert.That(response.IsSuccess, Is.True, "request should succeed");
+        Assert.That(response.StatusCode, Is.EqualTo(200), "should return OK status");
+        Assert.That(response.Data, Is.Not.Null, "response should contain data");
+        Assert.That(response.Data, Is.Not.Empty, "server 1 should have companies");
 
         // Verify all companies belong to the requested server
-        response.Data.Should().AllSatisfy(company =>
+        foreach (var company in response.Data!)
         {
-            company.ServerId.Should().Be(serverId, "all companies should belong to requested server");
-        });
+            Assert.That(company.ServerId, Is.EqualTo(serverId), "all companies should belong to requested server");
+        }
     }
 
     /// <summary>
@@ -62,10 +61,10 @@ public class CompanyTests : TestBase
         var response = await _apiClient.GetAsync<Company[]>($"api/Server/{serverId}/Companies");
 
         // Assert
-        response.IsSuccess.Should().BeTrue("request should complete successfully");
-        response.StatusCode.Should().Be(200, "should return OK status");
-        response.Data.Should().NotBeNull("response should contain data");
-        response.Data.Should().BeEmpty($"server {serverId} should have no companies");
+        Assert.That(response.IsSuccess, Is.True, "request should complete successfully");
+        Assert.That(response.StatusCode, Is.EqualTo(200), "should return OK status");
+        Assert.That(response.Data, Is.Not.Null, "response should contain data");
+        Assert.That(response.Data, Is.Empty, $"server {serverId} should have no companies");
     }
 
     /// <summary>
@@ -81,8 +80,8 @@ public class CompanyTests : TestBase
         var response = await unauthenticatedClient.GetAsync<Company[]>("api/Server/1/Companies");
 
         // Assert
-        response.IsSuccess.Should().BeFalse("unauthenticated request should fail");
-        response.StatusCode.Should().Be(401, "should return Unauthorized status");
+        Assert.That(response.IsSuccess, Is.False, "unauthenticated request should fail");
+        Assert.That(response.StatusCode, Is.EqualTo(401), "should return Unauthorized status");
     }
 
     /// <summary>
@@ -95,17 +94,17 @@ public class CompanyTests : TestBase
         var response = await _apiClient.GetAsync<Company[]>("api/Server/1/Companies");
 
         // Assert
-        response.IsSuccess.Should().BeTrue();
-        response.Data.Should().NotBeEmpty();
+        Assert.That(response.IsSuccess, Is.True);
+        Assert.That(response.Data, Is.Not.Empty);
 
         // Verify first company has all required properties with valid values
         var firstCompany = response.Data!.First();
 
-        firstCompany.Id.Should().BeGreaterThan(0, "company ID should be positive");
-        firstCompany.ServerId.Should().BeGreaterThan(0, "server ID should be positive");
-        firstCompany.Key.Should().BeGreaterThan(0, "company key should be positive");
-        firstCompany.Name.Should().NotBeNullOrEmpty("company should have a name");
-        firstCompany.DataBase.Should().NotBeNull("database field should be present");
+        Assert.That(firstCompany.Id, Is.GreaterThan(0), "company ID should be positive");
+        Assert.That(firstCompany.ServerId, Is.GreaterThan(0), "server ID should be positive");
+        Assert.That(firstCompany.Key, Is.GreaterThan(0), "company key should be positive");
+        Assert.That(firstCompany.Name, Is.Not.Null.And.Not.Empty, "company should have a name");
+        Assert.That(firstCompany.DataBase, Is.Not.Null, "database field should be present");
     }
 
     /// <summary>
@@ -127,8 +126,8 @@ public class CompanyTests : TestBase
         var duration = DateTime.UtcNow - startTime;
 
         // Assert
-        response.IsSuccess.Should().BeTrue();
-        duration.TotalMilliseconds.Should().BeLessThan(maxAcceptableMs,
+        Assert.That(response.IsSuccess, Is.True);
+        Assert.That(duration.TotalMilliseconds, Is.LessThan(maxAcceptableMs),
             $"request should complete within {maxAcceptableMs}ms");
     }
 }
