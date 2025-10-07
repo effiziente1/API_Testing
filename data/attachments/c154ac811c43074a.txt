@@ -1,0 +1,6 @@
+========== HTTP ERROR ==========
+Method: Get
+URL: https://effizienteauthdemo.azurewebsites.net/api/Server/1/Companies
+Status Code: 401 Unauthorized
+Response Body: 
+================================
