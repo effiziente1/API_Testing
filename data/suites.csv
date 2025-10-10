@@ -1,12 +1,12 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","293","GetCompanies_ReturnsWithinAcceptableTime","Company","Thu Oct 09 07:09:52 UTC 2025","passed","Thu Oct 09 07:09:52 UTC 2025","","","CompanyTests","GetCompanies_ReturnsWithinAcceptableTime"
-"","1050","Login_WithValidCredentials_ReturnsToken","Login","Thu Oct 09 07:09:53 UTC 2025","passed","Thu Oct 09 07:09:54 UTC 2025","","","LoginTests","Login_WithValidCredentials_ReturnsToken"
-"Non-existent server ID
-","180","GetCompanies_WithInvalidServerId_ReturnsEmptyArray(999)","Company","Thu Oct 09 07:09:52 UTC 2025","passed","Thu Oct 09 07:09:52 UTC 2025","","","CompanyTests","GetCompanies_WithInvalidServerId_ReturnsEmptyArray"
 "Zero server ID
-","93","GetCompanies_WithInvalidServerId_ReturnsEmptyArray(0)","Company","Thu Oct 09 07:09:52 UTC 2025","passed","Thu Oct 09 07:09:52 UTC 2025","","","CompanyTests","GetCompanies_WithInvalidServerId_ReturnsEmptyArray"
-"","157","GetCompanies_ReturnsValidCompanyStructure","Company","Thu Oct 09 07:09:52 UTC 2025","passed","Thu Oct 09 07:09:52 UTC 2025","","","CompanyTests","GetCompanies_ReturnsValidCompanyStructure"
-"","92","UnauthenticatedRequest_ToProtectedEndpoint_ReturnsUnauthorized","Login","Thu Oct 09 07:09:54 UTC 2025","passed","Thu Oct 09 07:09:54 UTC 2025","","","LoginTests","UnauthenticatedRequest_ToProtectedEndpoint_ReturnsUnauthorized"
-"","1216","GetCompanies_AuthenticatedRequestValidatesSchema","Company","Thu Oct 09 07:09:50 UTC 2025","passed","Thu Oct 09 07:09:51 UTC 2025","","","CompanySchemaTests","GetCompanies_AuthenticatedRequestValidatesSchema"
-"","92","GetCompanies_WithValidServerId_ReturnsCompanies","Company","Thu Oct 09 07:09:52 UTC 2025","passed","Thu Oct 09 07:09:53 UTC 2025","","","CompanyTests","GetCompanies_WithValidServerId_ReturnsCompanies"
-"","172","GetCompanies_WithoutAuthentication_ReturnsUnauthorized","Company","Thu Oct 09 07:09:52 UTC 2025","passed","Thu Oct 09 07:09:52 UTC 2025","","","CompanyTests","GetCompanies_WithoutAuthentication_ReturnsUnauthorized"
+","231","GetCompanies_WithInvalidServerId_ReturnsEmptyArray(0)","Company","Fri Oct 10 07:09:47 UTC 2025","passed","Fri Oct 10 07:09:47 UTC 2025","","","CompanyTests","GetCompanies_WithInvalidServerId_ReturnsEmptyArray"
+"","193","GetCompanies_WithoutAuthentication_ReturnsUnauthorized","Company","Fri Oct 10 07:09:47 UTC 2025","passed","Fri Oct 10 07:09:48 UTC 2025","","","CompanyTests","GetCompanies_WithoutAuthentication_ReturnsUnauthorized"
+"","278","GetCompanies_ReturnsValidCompanyStructure","Company","Fri Oct 10 07:09:46 UTC 2025","passed","Fri Oct 10 07:09:47 UTC 2025","","","CompanyTests","GetCompanies_ReturnsValidCompanyStructure"
+"","222","GetCompanies_ReturnsWithinAcceptableTime","Company","Fri Oct 10 07:09:47 UTC 2025","passed","Fri Oct 10 07:09:47 UTC 2025","","","CompanyTests","GetCompanies_ReturnsWithinAcceptableTime"
+"","201","GetCompanies_WithValidServerId_ReturnsCompanies","Company","Fri Oct 10 07:09:48 UTC 2025","passed","Fri Oct 10 07:09:48 UTC 2025","","","CompanyTests","GetCompanies_WithValidServerId_ReturnsCompanies"
+"","481","GetCompanies_AuthenticatedRequestValidatesSchema","Company","Fri Oct 10 07:09:45 UTC 2025","passed","Fri Oct 10 07:09:45 UTC 2025","","","CompanySchemaTests","GetCompanies_AuthenticatedRequestValidatesSchema"
+"","241","UnauthenticatedRequest_ToProtectedEndpoint_ReturnsUnauthorized","Login","Fri Oct 10 07:09:50 UTC 2025","passed","Fri Oct 10 07:09:50 UTC 2025","","","LoginTests","UnauthenticatedRequest_ToProtectedEndpoint_ReturnsUnauthorized"
+"","1174","Login_WithValidCredentials_ReturnsToken","Login","Fri Oct 10 07:09:48 UTC 2025","passed","Fri Oct 10 07:09:50 UTC 2025","","","LoginTests","Login_WithValidCredentials_ReturnsToken"
+"Non-existent server ID
+","224","GetCompanies_WithInvalidServerId_ReturnsEmptyArray(999)","Company","Fri Oct 10 07:09:47 UTC 2025","passed","Fri Oct 10 07:09:47 UTC 2025","","","CompanyTests","GetCompanies_WithInvalidServerId_ReturnsEmptyArray"
