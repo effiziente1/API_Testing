@@ -1,5 +1,9 @@
 {
   "dotnet-test-explorer.testProjectPath": "**/*.Tests.csproj",
   "dotnet-test-explorer.runSettingsPath": "${workspaceFolder}/ApiTestingDemo.Tests/test.runsettings",
-  "dotnet.unitTests.runSettingsPath": "${workspaceFolder}/ApiTestingDemo.Tests/test.runsettings"
+  "dotnet.unitTests.runSettingsPath": "${workspaceFolder}/ApiTestingDemo.Tests/test.runsettings",
+  "dotnet-test-explorer.testArguments": "--environment \"DOTNET_ENVIRONMENT=Development\"",
+  "dotnet.unitTests.dotnetTestExtraArgs": {
+    "DOTNET_ENVIRONMENT": "Development"
+  }
 }

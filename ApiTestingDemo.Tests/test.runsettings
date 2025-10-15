@@ -5,4 +5,9 @@
     <Parameter name="DefaultTimeout" value="30000" />
     <Parameter name="RetryAttempts" value="3" />
   </TestRunParameters>
+  <RunConfiguration>
+    <EnvironmentVariables>
+      <DOTNET_ENVIRONMENT>Development</DOTNET_ENVIRONMENT>
+    </EnvironmentVariables>
+  </RunConfiguration>
 </RunSettings>
