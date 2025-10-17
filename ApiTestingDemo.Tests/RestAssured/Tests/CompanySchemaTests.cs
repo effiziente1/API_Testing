@@ -20,7 +20,7 @@ public class CompanySchemaTests : TestBase
     [SetUp]
     public void Setup()
     {
-        _baseUrl = TestContext.Parameters["AuthUrl"]!;
+        _baseUrl = TestContext.Parameters["AuthUrl"] ?? Configuration["AuthUrl"]!;
         _restAssuredClient = new RestAssuredClient(_baseUrl, AuthToken);
     }
 

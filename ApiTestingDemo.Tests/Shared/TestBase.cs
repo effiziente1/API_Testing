@@ -15,17 +15,17 @@ public abstract class TestBase
     /// Available to all derived test classes
     /// </summary>
     protected string AuthToken { get; private set; } = string.Empty;
-    
+
     /// <summary>
     /// Configuration instance for accessing environment variables and user secrets
     /// </summary>
     protected IConfiguration Configuration { get; private set; } = null!;
-    
+
     /// <summary>
     /// Default timeout for API requests from test settings
     /// </summary>
     protected int DefaultTimeout { get; private set; }
-    
+
     /// <summary>
     /// Number of retry attempts from test settings
     /// </summary>
@@ -38,8 +38,10 @@ public abstract class TestBase
     [OneTimeSetUp]
     public async Task OneTimeSetup()
     {
-        // Step 1: Build configuration from environment variables and user secrets
+        // Step 1: Build configuration from appsettings.json, environment variables and user secrets
         Configuration = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: false)
             .AddEnvironmentVariables()
             .AddUserSecrets<TestBase>()
             .Build();
@@ -60,13 +62,13 @@ public abstract class TestBase
             UserName = userName,
             Password = password
         };
-        
+
         // Step 5: Get API base URL from test context parameters
-        var authUrl = TestContext.Parameters["AuthUrl"]!;
-        
+        var authUrl = TestContext.Parameters["AuthUrl"] ?? Configuration["AuthUrl"]!;
+
         // Step 6: Create API client (no auth token needed for login)
         var authClient = new RestSharpClient(authUrl);
-        
+
         // Step 7: Authenticate and get JWT token
         var response = await authClient.PostAsync<LoginResponse>("/api/Users/login", user);
         AuthToken = response.Data!.Token;
