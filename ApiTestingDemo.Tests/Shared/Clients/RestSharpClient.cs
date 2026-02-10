@@ -193,18 +193,16 @@ public class RestSharpClient : IApiClient
     {
         if ((int)response.StatusCode >= 400)
         {
-            Console.WriteLine("========== HTTP ERROR ==========");
             Console.WriteLine($"Method: {request.Method}");
             Console.WriteLine($"URL: {response.ResponseUri}");
             Console.WriteLine($"Status Code: {(int)response.StatusCode} {response.StatusCode}");
-            
+
             if (body != null)
             {
                 Console.WriteLine($"Request Body: {JsonSerializer.Serialize(body, new JsonSerializerOptions { WriteIndented = true })}");
             }
-            
+
             Console.WriteLine($"Response Body: {response.Content}");
-            Console.WriteLine("================================");
         }
     }
 }

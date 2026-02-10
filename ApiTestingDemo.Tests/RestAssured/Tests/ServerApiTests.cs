@@ -8,7 +8,6 @@ namespace ApiTestingDemo.Tests.RestAssured.Tests;
 
 /// <summary>
 /// API tests for the Server resource focusing on POST /api/Server
-/// Generated from Swagger: https://effizienteauthdemo.azurewebsites.net/swagger/v1/swagger.json
 /// </summary>
 [AllureParentSuite("Server")]
 [Category("Server")]

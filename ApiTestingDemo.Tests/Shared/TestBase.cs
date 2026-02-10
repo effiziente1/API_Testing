@@ -70,7 +70,7 @@ public abstract class TestBase
         var authClient = new RestSharpClient(authUrl);
 
         // Step 7: Authenticate and get JWT token
-        var response = await authClient.PostAsync<LoginResponse>("/api/Users/login", user);
-        AuthToken = response.Data!.Token;
+        var response = await authClient.PostAsync<LoginResponse>("/api/users/login", user);
+        AuthToken = response.Data!.AccessToken;
     }
 }

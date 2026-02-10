@@ -57,10 +57,10 @@ public class LoginTests : TestBase
 
         // Step 5: Verify token is present in response
         Assert.That(response.Data, Is.Not.Null, "Response data should not be null");
-        Assert.That(response.Data!.Token, Is.Not.Empty, "Token should not be empty");
+        Assert.That(response.Data!.AccessToken, Is.Not.Empty, "Token should not be empty");
 
         // Step 6: Verify token format (JWT tokens have 3 parts separated by dots)
-        var tokenParts = response.Data.Token.Split('.');
+        var tokenParts = response.Data.AccessToken.Split('.');
         Assert.That(tokenParts.Length, Is.EqualTo(3), "JWT token should have 3 parts");
 
         // Step 7: Verify token expiration is in the future
