@@ -71,6 +71,6 @@ public abstract class TestBase
 
         // Step 7: Authenticate and get JWT token
         var response = await authClient.PostAsync<LoginResponse>("/api/users/login", user);
-        AuthToken = response.Data!.Token;
+        AuthToken = response.Data!.AccessToken;
     }
 }
