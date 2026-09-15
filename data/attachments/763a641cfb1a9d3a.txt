@@ -1,0 +1,4 @@
+Method: Get
+URL: https://abi-testing-dojo-auth-demo.azurewebsites.net/api/Server/1/Companies
+Status Code: 401 Unauthorized
+Response Body: 
